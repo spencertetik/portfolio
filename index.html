@@ -90,13 +90,13 @@ nav .links a:hover { color: var(--text); }
 }
 
 .hero-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 8px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
   object-position: center top;
-  margin-bottom: 28px;
   border: 2px solid var(--border);
+  margin-bottom: 20px;
 }
 
 .hero h1 {
@@ -492,7 +492,7 @@ header nav { animation-delay: 0s; }
     gap: 28px;
     padding: 24px 0 56px;
   }
-  .hero-photo { width: 140px; height: 140px; }
+  .hero-photo { width: 100px; height: 100px; }
   .featured-card {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -532,7 +532,6 @@ header nav { animation-delay: 0s; }
 
     <div class="hero">
       <div>
-        <img src="spencer.jpg" alt="Spencer Tetik" class="hero-photo reveal">
         <h1 class="reveal">Motion designer<br>building <em>tools</em><br>with AI</h1>
       </div>
       <aside class="reveal">
@@ -575,7 +574,7 @@ header nav { animation-delay: 0s; }
     <div class="featured-card" data-category="internal">
       <div>
         <span class="badge">Featured — Internal Tool</span>
-        <h3>Team Pulse</h3>
+        <h3>Workload Manager</h3>
         <p class="desc">Project management dashboard for Merge's video team. Replaced a Google Docs workflow with real-time Kanban boards, drag-and-drop, dual team views, and milestone tracking.</p>
         <div class="stack">
           <span class="tag">Firebase</span>
@@ -584,7 +583,7 @@ header nav { animation-delay: 0s; }
           <span class="tag">Vanilla JS</span>
           <span class="tag">Real-time Sync</span>
         </div>
-        <p class="note">Internal tool — demo available on request</p>
+        <p class="note"><a href="https://fluffy-cheesecake-8afd9f.netlify.app" target="_blank" style="color:var(--teal);text-decoration:none;">View live demo ↗</a> — domain-restricted auth (mergeworld.com)</p>
       </div>
       <div class="features">
         <div class="feat">
@@ -765,6 +764,7 @@ header nav { animation-delay: 0s; }
 
   <section class="about-section" id="about">
     <div class="col">
+      <img src="spencer.jpg" alt="Spencer Tetik" class="hero-photo reveal">
       <h2>About</h2>
       <p><strong>Senior Motion Graphic Designer at Merge</strong>, making social campaigns for American Express, T-Mobile, Blue Cross Blue Shield. Daily tools: After Effects, Cinema 4D, Premiere Pro, Photoshop, Illustrator.</p>
       <p>I also work with <strong>Everyday Astronaut</strong> — editing videos, building animations, and running live rocket launch broadcasts on-site.</p>
