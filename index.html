@@ -354,15 +354,25 @@ a.card:hover {
 .cat-internal { background: rgba(212,163,64,0.1); color: var(--amber); }
 
 .card .arrow {
-  font-size: 16px;
-  color: var(--text-dim);
-  opacity: 0;
-  transition: opacity 0.2s, transform 0.2s;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface-up);
+  border: 1px solid var(--border-up);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-mid);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  flex-shrink: 0;
 }
 
 a.card:hover .arrow {
-  opacity: 1;
-  transform: translate(2px, -2px);
+  background: var(--burnt-dim);
+  border-color: var(--burnt);
+  color: var(--burnt);
+  transform: translate(1px, -1px);
 }
 
 .card h4 {
@@ -615,7 +625,7 @@ header nav { animation-delay: 0s; }
       <a class="card" href="https://rocket-tracker.com" target="_blank" data-category="webapp">
         <div class="card-top">
           <span class="cat cat-webapp">Web App</span>
-          <span class="arrow">↗</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
         </div>
         <h4>Rocket Tracker</h4>
         <p class="card-desc">3D Starship visualizer with interactive models, audio simulation, and real-time spaceflight tracking.</p>
@@ -644,7 +654,7 @@ header nav { animation-delay: 0s; }
       <a class="card" href="https://incomparable-selkie-cd1175.netlify.app" target="_blank" data-category="webapp">
         <div class="card-top">
           <span class="cat cat-webapp">Web App</span>
-          <span class="arrow">↗</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
         </div>
         <h4>Space Stats Live</h4>
         <p class="card-desc">Real-time spaceflight statistics — launches, astronauts, missions. Auto-refreshes via GitHub Actions.</p>
@@ -736,7 +746,7 @@ header nav { animation-delay: 0s; }
       <a class="card" href="https://candid-youtiao-3f57ce.netlify.app" target="_blank" data-category="webapp">
         <div class="card-top">
           <span class="cat cat-webapp">Web App</span>
-          <span class="arrow">↗</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
         </div>
         <h4>Flower Farm Planner</h4>
         <p class="card-desc">Agricultural planning — scheduling, crop management, and farm operations tracking.</p>
