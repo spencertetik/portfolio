@@ -427,6 +427,137 @@ a.card:hover .arrow {
   gap: 5px;
 }
 
+/* ========== MEDIA PREVIEW ICON ========== */
+.card[data-media] {
+  cursor: pointer;
+}
+
+.card[data-media]:hover {
+  border-color: var(--border-up);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+}
+
+.card .preview-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface-up);
+  border: 1px solid var(--border-up);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-mid);
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.card[data-media]:hover .preview-icon {
+  background: var(--burnt-dim);
+  border-color: var(--burnt);
+  color: var(--burnt);
+}
+
+/* ========== LIGHTBOX ========== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(8px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox.open {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-header {
+  position: absolute;
+  top: 24px;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightbox-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--text);
+}
+
+.lightbox-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-up);
+  background: var(--surface);
+  color: var(--text-mid);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.lightbox-close:hover {
+  background: var(--surface-up);
+  color: var(--text);
+}
+
+.lightbox-content {
+  display: flex;
+  gap: 16px;
+  max-width: 100%;
+  max-height: calc(100vh - 140px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+  max-height: calc(100vh - 180px);
+  max-width: 90vw;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  scroll-snap-align: center;
+  flex-shrink: 0;
+}
+
+.lightbox-content video {
+  background: #000;
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 24px;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 860px) {
+  .lightbox { padding: 20px; }
+  .lightbox-header { left: 20px; right: 20px; top: 16px; }
+  .lightbox-content img,
+  .lightbox-content video {
+    max-height: calc(100vh - 140px);
+    max-width: 95vw;
+  }
+}
+
 /* ========== ABOUT ========== */
 .about-section {
   padding: 72px 0;
@@ -670,9 +801,10 @@ header nav { animation-delay: 0s; }
         </div>
       </a>
 
-      <div class="card" data-category="iot">
+      <div class="card" data-category="iot" data-media="media/energy-dashboard.png" data-title="Energy Dashboard">
         <div class="card-top">
           <span class="cat cat-iot">IoT</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>Energy Dashboard</h4>
         <p class="card-desc">Home energy monitoring: Kay Electric, Tesla Wall Connector, Rheem water heater, MrCool HVAC — unified.</p>
@@ -698,9 +830,10 @@ header nav { animation-delay: 0s; }
         </div>
       </a>
 
-      <div class="card" data-category="creative">
+      <div class="card" data-category="creative" data-media="media/ae-super-tool-1.png,media/ae-super-tool-2.png" data-title="AE Super Tool">
         <div class="card-top">
           <span class="cat cat-creative">Creative</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>AE Super Tool</h4>
         <p class="card-desc">After Effects plugin — client config, color palettes, font tracking, asset organization.</p>
@@ -711,9 +844,10 @@ header nav { animation-delay: 0s; }
         </div>
       </div>
 
-      <div class="card" data-category="creative">
+      <div class="card" data-category="creative" data-media="media/reference-overlay.png" data-title="Reference Overlay">
         <div class="card-top">
           <span class="cat cat-creative">Creative</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>Reference Overlay</h4>
         <p class="card-desc">After Effects ScriptUI panel for overlaying reference media. Opacity, blend modes, blink toggle.</p>
@@ -723,9 +857,10 @@ header nav { animation-delay: 0s; }
         </div>
       </div>
 
-      <div class="card" data-category="ios">
+      <div class="card" data-category="ios" data-media="media/dockkit-camera-1.png,media/dockkit-camera-2.png,media/dockkit-camera-webui.png,media/dockkit-camera-video.mp4" data-title="DockKit Camera">
         <div class="card-top">
           <span class="cat cat-ios">iOS</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>DockKit Camera</h4>
         <p class="card-desc">iOS motorized camera tracking with clean 1080p output and web-based remote control over WebSocket.</p>
@@ -737,9 +872,10 @@ header nav { animation-delay: 0s; }
         </div>
       </div>
 
-      <div class="card" data-category="extension">
+      <div class="card" data-category="extension" data-media="media/meet-autopilot.png" data-title="Meet Autopilot">
         <div class="card-top">
           <span class="cat cat-extension">Extension</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>Meet Autopilot</h4>
         <p class="card-desc">Chrome extension — monitors Google Calendar and auto-joins upcoming Meet calls.</p>
@@ -750,9 +886,10 @@ header nav { animation-delay: 0s; }
         </div>
       </div>
 
-      <div class="card" data-category="webapp">
+      <div class="card" data-category="webapp" data-media="media/trivia-app.mp4" data-title="Trivia App">
         <div class="card-top">
           <span class="cat cat-webapp">Web App</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>Trivia App</h4>
         <p class="card-desc">Multiplayer trivia with WebSocket gameplay, live scoring, and room-based sessions.</p>
@@ -790,9 +927,10 @@ header nav { animation-delay: 0s; }
         </div>
       </a>
 
-      <div class="card" data-category="ios">
+      <div class="card" data-category="ios" data-media="media/perry-assembly-1.png,media/perry-assembly-2.png" data-title="Perry Assembly App">
         <div class="card-top">
           <span class="cat cat-ios">iOS</span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>Perry Assembly App</h4>
         <p class="card-desc">iOS app for assembly workflow management with custom UI components.</p>
@@ -856,7 +994,69 @@ header nav { animation-delay: 0s; }
   </footer>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-header">
+    <span class="lightbox-title" id="lightboxTitle"></span>
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+  </div>
+  <div class="lightbox-content" id="lightboxContent"></div>
+  <span class="lightbox-counter" id="lightboxCounter"></span>
+</div>
+
 <script>
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lbContent = document.getElementById('lightboxContent');
+const lbTitle = document.getElementById('lightboxTitle');
+const lbCounter = document.getElementById('lightboxCounter');
+const lbClose = document.getElementById('lightboxClose');
+
+document.querySelectorAll('.card[data-media]').forEach(card => {
+  card.addEventListener('click', () => {
+    const files = card.dataset.media.split(',');
+    const title = card.dataset.title || '';
+    lbTitle.textContent = title;
+    lbContent.innerHTML = '';
+
+    files.forEach(file => {
+      const f = file.trim();
+      if (f.endsWith('.mp4')) {
+        const vid = document.createElement('video');
+        vid.src = f;
+        vid.controls = true;
+        vid.playsInline = true;
+        vid.preload = 'metadata';
+        lbContent.appendChild(vid);
+      } else {
+        const img = document.createElement('img');
+        img.src = f;
+        img.alt = title;
+        img.loading = 'lazy';
+        lbContent.appendChild(img);
+      }
+    });
+
+    lbCounter.textContent = files.length > 1 ? files.length + ' items — scroll to see all' : '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+lbClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lbContent.querySelectorAll('video').forEach(v => v.pause());
+}
+
 // Filters
 const btns = document.querySelectorAll('.filter-btn');
 const allItems = document.querySelectorAll('.card, .featured-card');
