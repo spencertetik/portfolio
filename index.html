@@ -457,7 +457,23 @@ a.card:hover .arrow {
   gap: 6px;
 }
 
-.card .preview-icon:hover {
+.card[data-media]:hover .preview-icon {
+  background: var(--burnt-dim);
+  border-color: var(--burnt);
+  color: var(--burnt);
+}
+
+.card-icons .preview-icon {
+  cursor: pointer;
+}
+
+.card .card-icons .preview-icon {
+  background: var(--surface-up);
+  border-color: var(--border-up);
+  color: var(--text-mid);
+}
+
+.card .card-icons .preview-icon:hover {
   background: var(--burnt-dim);
   border-color: var(--burnt);
   color: var(--burnt);
@@ -1050,7 +1066,10 @@ const lbCounter = document.getElementById('lightboxCounter');
 const lbClose = document.getElementById('lightboxClose');
 
 document.querySelectorAll('.card[data-media]').forEach(card => {
-  card.addEventListener('click', () => {
+  const hasIcons = card.querySelector('.card-icons');
+  const clickTarget = hasIcons ? card.querySelector('.card-icons .preview-icon:not(a)') : card;
+  clickTarget.addEventListener('click', (e) => {
+    if (hasIcons) e.stopPropagation();
     const files = card.dataset.media.split(',');
     const title = card.dataset.title || '';
     lbTitle.textContent = title;
