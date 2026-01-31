@@ -786,10 +786,10 @@ header nav { animation-delay: 0s; }
     <!-- CARD GRID -->
     <div class="card-grid" id="cardGrid">
 
-      <a class="card" href="Project Auditor.html" target="_blank" data-category="internal">
+      <div class="card" data-category="internal" data-media="media/project-auditor.png" data-title="Project Auditor" data-link="Project Auditor.html">
         <div class="card-top">
           <span class="cat cat-internal">Internal Tool</span>
-          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span class="preview-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
         </div>
         <h4>Project Auditor</h4>
         <p class="card-desc">After Effects project auditor — generates an HTML report of everything inside a project file. Handed off alongside the project so recipients can see what's in there without opening AE.</p>
@@ -798,7 +798,7 @@ header nav { animation-delay: 0s; }
           <span class="tag">After Effects</span>
           <span class="tag">HTML Reports</span>
         </div>
-      </a>
+      </div>
 
       <a class="card" href="https://reviewflow-demo.netlify.app" target="_blank" data-category="internal">
         <div class="card-top">
@@ -1066,7 +1066,18 @@ document.querySelectorAll('.card[data-media]').forEach(card => {
       }
     });
 
-    lbCounter.textContent = files.length > 1 ? files.length + ' items — scroll to see all' : '';
+    const link = card.dataset.link;
+    if (link) {
+      const a = document.createElement('a');
+      a.href = link;
+      a.target = '_blank';
+      a.textContent = 'View Example Report →';
+      a.style.cssText = 'display:inline-block;margin-top:12px;padding:8px 16px;background:var(--burnt);color:#fff;font-size:13px;font-weight:600;border-radius:6px;text-decoration:none;';
+      lbCounter.textContent = '';
+      lbCounter.appendChild(a);
+    } else {
+      lbCounter.textContent = files.length > 1 ? files.length + ' items — scroll to see all' : '';
+    }
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
